@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>LocalNorthwindEF</PackageId>
+    <Version>1.0.2</Version>
+    <Authors>cornshakes</Authors>
+    <Copyright>Copyright © Michael Hopfner 2025</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Title>Local Northwind Entity Framework DB</Title>
+    <PackageProjectUrl>https://github.com/cornshakes/LocalNorthwindEF</PackageProjectUrl>
+    <Description>A self contained Northwind db to practice Entity Framework skills</Description>
+    <PackageTags>Entity Framework Core;Northwind;Practice;Sqlite;</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Readme>README.md</Readme>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="northwind.db" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="northwind.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
