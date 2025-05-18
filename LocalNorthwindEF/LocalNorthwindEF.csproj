@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageId>LocalNorthwindEF</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.1.0</Version>
+    <PackageVersion>1.1.0</PackageVersion>
     <Authors>cornshakes</Authors>
     <Copyright>Copyright © Michael Hopfner 2025</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -22,16 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="\" />
-    <None Include="northwind.db" Pack="true" PackagePath="\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="northwind.db">
+    <None Include="README.md" Pack="true" PackagePath="\">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="README.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="northwind.db" />
   </ItemGroup>
 </Project>

@@ -8,46 +8,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LocalNorthwindEF;
 
-public partial class NorthwindContextWithViews : DbContext
+public partial class NorthwindContextWithViews : SimpleNorthwindContext
 {
-    public NorthwindContextWithViews()
-    {
-    }
-
-    public NorthwindContextWithViews(DbContextOptions<NorthwindContextWithViews> options)
-        : base(options)
+    public NorthwindContextWithViews() : base()
     {
     }
 
     public virtual DbSet<AlphabeticalListOfProduct> AlphabeticalListOfProducts { get; set; }
 
-    public virtual DbSet<Category> Categories { get; set; }
-
     public virtual DbSet<CategorySalesFor1997> CategorySalesFor1997s { get; set; }
 
     public virtual DbSet<CurrentProductList> CurrentProductLists { get; set; }
 
-    public virtual DbSet<Customer> Customers { get; set; }
-
     public virtual DbSet<CustomerAndSuppliersByCity> CustomerAndSuppliersByCities { get; set; }
 
-    public virtual DbSet<CustomerDemographic> CustomerDemographics { get; set; }
-
-    public virtual DbSet<Employee> Employees { get; set; }
-
     public virtual DbSet<Invoice> Invoices { get; set; }
-
-    public virtual DbSet<Order> Orders { get; set; }
-
-    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
 
     public virtual DbSet<OrderDetailsExtended> OrderDetailsExtendeds { get; set; }
 
     public virtual DbSet<OrderSubtotal> OrderSubtotals { get; set; }
 
     public virtual DbSet<OrdersQry> OrdersQries { get; set; }
-
-    public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<ProductDetailsV> ProductDetailsVs { get; set; }
 
@@ -59,21 +40,13 @@ public partial class NorthwindContextWithViews : DbContext
 
     public virtual DbSet<QuarterlyOrder> QuarterlyOrders { get; set; }
 
-    public virtual DbSet<Region> Regions { get; set; }
-
     public virtual DbSet<SalesByCategory> SalesByCategories { get; set; }
 
     public virtual DbSet<SalesTotalsByAmount> SalesTotalsByAmounts { get; set; }
 
-    public virtual DbSet<Shipper> Shippers { get; set; }
-
     public virtual DbSet<SummaryOfSalesByQuarter> SummaryOfSalesByQuarters { get; set; }
 
     public virtual DbSet<SummaryOfSalesByYear> SummaryOfSalesByYears { get; set; }
-
-    public virtual DbSet<Supplier> Suppliers { get; set; }
-
-    public virtual DbSet<Territory> Territories { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlite("Data Source=northwind.db");

@@ -2,6 +2,8 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
 using LocalNorthwindEF.Tables;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +13,15 @@ public partial class SimpleNorthwindContext : DbContext
 {
     public SimpleNorthwindContext()
     {
+        string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+        string directory = Path.GetDirectoryName(assemblyLocation);
+        string filePath = Path.Combine(directory, "northwind.db");
+        if (!File.Exists(filePath))
+        {
+            var resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("LocalNorthwindEF.northwind.db");
+            using var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+            resourceStream?.CopyTo(fileStream);
+        }
     }
 
     public SimpleNorthwindContext(DbContextOptions<SimpleNorthwindContext> options)
