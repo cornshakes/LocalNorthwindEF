@@ -13,6 +13,8 @@ Copy it out of the build folder first if you want to keep it.
 
 ## Usage
 
+Install the nuget package [LocalNorthwindEF](https://www.nuget.org/packages/LocalNorthwindEF/).
+
 There is the simple context which contains all the tables:
 
 ```csharp
